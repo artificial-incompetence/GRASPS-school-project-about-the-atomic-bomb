@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>True/False Game</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>True or False Game</h1>
+
+<h2 id="question">oppenheimer was german.</h2>
+
+<button onclick="answer(true)">True</button>
+<button onclick="answer(false)">False</button>
+
+<p id="result"></p>
+
+<button onclick="location.href='index.web'">Back to Home</button>
+
+<script>
+let questionNumber = 1;
+let score = 0;
+let totalQuestions = 2; // change if you add more
+
+function answer(userChoice) {
+    let correctAnswer;
+
+    // correct answers
+    if (questionNumber === 1) {
+        correctAnswer = false;
+    } 
+    else if (questionNumber === 2) {
+        correctAnswer = true;
+    }
+
+    // check answer
+    if (userChoice === correctAnswer) {
+        document.getElementById("result").innerText = "Correct!";
+        score++;
+    } else {
+        document.getElementById("result").innerText = "Wrong!";
+    }
+
+    // move forward
+    questionNumber++;
+
+    // next question or end
+    if (questionNumber === 2) {
+        document.getElementById("question").innerText =
+        "Germany and the Soviet Union agreed to divide Poland.";
+    } 
+    else {
+        if (score === totalQuestions) {
+            document.getElementById("question").innerText = "You Win!";
+        } else {
+            document.getElementById("question").innerText = "You Lose!";
+        }
+
+        // optional: disable buttons after game ends
+document.querySelectorAll(".answer-btn").forEach(btn => btn.disabled = true);    }
+}
+</script>
+
+</body>
+</html>
